@@ -1,0 +1,10 @@
+{% extends "base.html" %}
+{% block title %}Welcome{% endblock %}
+{% block content %}
+<div class="container text-center">
+  <h1 class="mt-5">Welcome to Expense Manager 💸</h1>
+  <p class="lead">Track your daily expenses effortlessly.</p>
+  <a href="{{ url_for('auth.login') }}" class="btn btn-primary me-2">Login</a>
+  <a href="{{ url_for('auth.register') }}" class="btn btn-outline-primary">Register</a>
+</div>
+{% endblock %}

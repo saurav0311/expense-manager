@@ -4,9 +4,9 @@ from flask_login import current_user
 from flask_login import login_required
 
 main= Blueprint("main",__name__)
-@main.route("/", methods=["GET", "POST"])
+@main.route("/dashboard", methods=["GET", "POST"])
 @login_required
-def home():
+def dashboard():
     if request.method=="POST":
         amount=request.form.get("amount")
         category=request.form.get("category")
@@ -21,4 +21,8 @@ def home():
         return redirect("/")
     expenses=Expense.query.filter_by(user_id=current_user.id).all()
     return render_template("index.html", expenses=expenses)
+
+@main.route("/")
+def landing_page():
+    return render_template("landing.html")
  

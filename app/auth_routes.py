@@ -21,7 +21,7 @@ def register():
         db.session.commit()
 
         flash("User registered successfully!!!", category="success")
-        return redirect(url_for("main.home")) 
+        return redirect(url_for("main.dashboard"))
     return render_template("register.html")
 
 from flask import session

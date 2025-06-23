@@ -52,14 +52,14 @@
 </html>  -->
 
 
-{% extends "base.html" %}
+<!-- {% extends "base.html" %}
 {% block title %}Dashboard - Expense Manager{% endblock %}
 {% block content %}
 
 <div class="container">
   <h2 class="text-center mb-4">Track Your Expenses</h2>
   <h3>Welcome, {{current_user.username}}</h3>
-  <!-- Expense Form -->
+  Expense Form
   <form method="POST" class="card card-body shadow-sm mb-5">
     <div class="row g-3">
       <div class="col-md-4">
@@ -87,7 +87,7 @@
     </div>
   </form>
 
-  <!-- Expenses Grid -->
+  Expenses Grid
   <div class="row">
     {% for expense in expenses %}
       <div class="col-md-4">
@@ -106,4 +106,73 @@
   </div>
 </div>
 
+{% endblock %} -->
+
+
+
+
+
+
+{% extends "base.html" %}
+{% block title %}Dashboard - Expense Manager{% endblock %}
+
+{% block content %}
+<div class="container my-4">
+  <div class="d-flex justify-content-between align-items-center mb-4">
+    <h2 class="text-primary">💸 Dashboard</h2>
+    <a href="/auth/logout" class="btn btn-outline-danger">Logout</a>
+  </div>
+
+  <!-- Expense Form Card -->
+  <div class="card shadow-sm mb-5">
+    <div class="card-header bg-primary text-white">Add New Expense</div>
+    <div class="card-body">
+      <form method="POST">
+        <div class="row g-3">
+          <div class="col-md-4">
+            <input type="number" step="0.01" name="amount" class="form-control" placeholder="Amount (₹)" required>
+          </div>
+          <div class="col-md-4">
+            <select name="category" class="form-control" required>
+              <option value="">-- Select Category --</option>
+              <option value="Education">Education</option>
+              <option value="Food">Food</option>
+              <option value="Health">Health</option>
+              <option value="Entertainment">Entertainment</option>
+              <option value="Utilities">Utilities</option>
+              <option value="Other">Other</option>
+            </select>
+            <option value="Transport">Transport</option>
+          </div>
+          <div class="col-md-4">
+            <input type="text" name="note" class="form-control" placeholder="Note (optional)">
+          </div>
+        </div>
+        <div class="text-end mt-3">
+          <button type="submit" class="btn btn-success px-4">Add Expense</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Expenses Display -->
+  <div class="row">
+    {% for expense in expenses %}
+      <div class="col-md-4">
+        <div class="card border-primary shadow-sm mb-4 h-100">
+          <div class="card-body">
+            <h5 class="card-title">{{ expense.category }}</h5>
+            <h6 class="card-subtitle mb-2 text-muted">₹{{ expense.amount }}</h6>
+            <p class="card-text">{{ expense.note or "No note" }}</p>
+          </div>
+          <div class="card-footer text-end small text-muted">
+            {{ expense.date.strftime('%b %d, %Y') }}
+          </div>
+        </div>
+      </div>
+    {% else %}
+      <p class="text-muted text-center">No expenses yet. Start adding some!</p>
+    {% endfor %}
+  </div>
+</div>
 {% endblock %}
