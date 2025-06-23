@@ -35,7 +35,7 @@ def login():
             login_user(user) # session["user_id"]=user.id
             # session["username"]=user.username
             flash("Login Successful!!!", category="success")
-            return redirect(url_for("main.home"))
+            return redirect(url_for("main.dashboard"))
         else:
             flash("Invalid. Try again!!", category="danger")
             return redirect(url_for("auth.login"))
