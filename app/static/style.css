@@ -1,0 +1,28 @@
+body{
+    font-family: Arial, Helvetica, sans-serif;
+    margin: 40px;
+    background: #939bd6;
+}
+
+form input, form button{
+    display: block;
+    margin: 10px 0;
+    padding: 8px;
+    width: 300px;
+    background: beige;
+}
+
+table{
+    margin-top: 20px;
+    border-collapse: collapse;
+    width: 100%;
+}
+
+table, th, td{
+    border: 1px solid #ab0e0e;
+}
+
+th, td{
+    padding: 8px;
+    text-align: left;
+}
